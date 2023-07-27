@@ -1,0 +1,78 @@
+html {
+	box-sizing: border-box;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+}
+
+*,*::before,*::after {
+	box-sizing: inherit;
+}
+
+body {
+	color: $color;
+	text-align: center;
+	background-color: $backgroundColor;
+}
+
+#main {
+	margin: 0 auto;
+	max-width: 800px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	padding: 10px 10px;
+}
+
+.add-btn {
+	padding-top: 120px;
+	margin-bottom: 50px;
+}
+
+.btn--margin {
+	margin-right: 4px;
+}
+
+.cards-list {
+	@include displayFlex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.btn--padding {
+	font-size: 18px;
+	padding: 3px 40px;
+}
+
+.btn-all--padding {
+	padding: 6px 25px;
+}
+
+.card-body {
+	@include displayFlex;
+	flex-direction: column;
+}
+
+@include smallMobile {
+	.card {
+		width: 12rem !important;
+    height: 13rem !important;
+	}
+
+	.btn-all--padding {
+    padding: 6px 4px;
+	}
+
+	.btn--margin {
+    margin-right: 0;
+		padding: 6px 4px;
+	}
+}

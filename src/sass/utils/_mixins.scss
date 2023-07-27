@@ -1,0 +1,11 @@
+@mixin displayFlex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin smallMobile {
+	@media screen and (min-width: 100px) and (max-width: 270px) {
+		@content;
+	}
+}
