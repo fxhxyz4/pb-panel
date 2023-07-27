@@ -1,0 +1,41 @@
+{
+	"name": "pb-panel",
+	"version": "1.0.0",
+	"description": "panel for managing teams on pb",
+	"keywords": [
+		"pixel-battle",
+		"vkontakte",
+		"r/place",
+		"twitch",
+		"reddit",
+		"gulp",
+		"scss",
+		"vk",
+		"pb"
+	],
+	"author": "fxhxyz <fxhxyz@proton.me> (https://fxhxyz.vercel.app/)",
+	"homepage": "https://fxhxyz.vercel.app/",
+	"bugs": "https://github.com/fxhxyz4/pb-panel/issues",
+	"license": "MIT",
+	"scripts": {
+		"dev": "gulp",
+		"build": "gulp build",
+		"deploy": "gh-pages -d build",
+    "prod": "yarn build && yarn deploy"
+	},
+	"dependencies": {
+		"gh-pages": "^5.0.0"
+	},
+	"devDependencies": {
+		"browser-sync": "^2.28.3",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^8.0.0",
+		"gulp-clean": "^0.4.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-css-purge": "^3.0.9",
+		"gulp-htmlmin": "^5.0.1",
+		"gulp-sass": "^5.1.0",
+		"gulp-uglify-es": "^3.0.0",
+		"sass": "^1.58.3"
+	}
+}
