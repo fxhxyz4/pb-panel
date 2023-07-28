@@ -28,7 +28,7 @@ const addCard = () => {
   count++;
 
   const newCard = document.createElement('li');
-  newCard.className = `cards-item` + ' ' + `cls${count}`;
+  newCard.className = `cards-item`;
 
   const card = document.createElement('div');
   card.className = `card`;
@@ -50,8 +50,18 @@ const addCard = () => {
   const cardButton = document.createElement('a');
   cardButton.href = `#`;
 
-  cardButton.className = `btn btn-start btn-primary btn--padding`;
+  cardButton.className = `btn btn-start btn-primary btn--padding cls${count}`;
   cardButton.textContent = `start`;
+
+  cardButton.addEventListener('click', () => {
+    cardTime.style.display = 'block';
+    newCard.classList.add('cards-started');
+
+    cardTime.textContent = timeText;
+
+    cardButton.disabled = true;
+    startTimer(cardTime, count);
+  });
 
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(cardTime);
@@ -62,6 +72,22 @@ const addCard = () => {
   newCard.appendChild(card);
   cardList.appendChild(newCard);
 }
+
+const startTimer = (cardTime) => {
+  let seconds = timeout * 60;
+
+  const interval = setInterval(() => {
+    seconds--;
+    cardTime.textContent = formatTime(seconds);
+
+    if (seconds <= 0) {
+      cardTime.style.display = 'none';
+      clearInterval(interval);
+    }
+
+    cardTime.textContent = formatTime(seconds);
+  }, 1000);
+};
 
 addBtn.addEventListener('click', addCard);
 
