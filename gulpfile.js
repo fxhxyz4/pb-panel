@@ -78,6 +78,7 @@ const buildDist = () => {
 			'./src/index.html',
 			'./src/styles/index.min.css',
 			'./src/scripts/modules/refs.js',
+      './src/scripts/index.min.js',
 		],
 		{ base: './src' }
 	).pipe(dest('build'));
