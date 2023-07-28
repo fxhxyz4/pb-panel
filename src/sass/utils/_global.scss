@@ -12,6 +12,7 @@ body {
 	color: $color;
 	text-align: center;
 	background-color: $backgroundColor;
+	@include userSelect;
 }
 
 #main {
@@ -32,13 +33,21 @@ a {
 	padding: 10px 10px;
 }
 
-.add-btn {
+.btns {
 	padding-top: 120px;
 	margin-bottom: 50px;
 }
 
 .btn--margin {
 	margin-right: 4px;
+}
+
+.timeout {
+	margin-top: 18px;
+}
+
+.timeout-list {
+	@include displayFlex;
 }
 
 .cards-list {
@@ -59,6 +68,27 @@ a {
 .card-body {
 	@include displayFlex;
 	flex-direction: column;
+}
+
+.cards-started {
+	.card {
+		background-color: #808080;
+	}
+
+	.card-title {
+		margin-top: 7px;
+	}
+
+	.btn--padding {
+		display: none;
+	}
+
+	.card-time {
+		margin: 0;
+    padding: 0;
+		font-size: 28px;
+		font-weight: 600;
+	}
 }
 
 @include smallMobile {
