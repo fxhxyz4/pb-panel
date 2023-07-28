@@ -8,14 +8,6 @@
 	<meta name="description" content="panel for managing teams on pb" />
 	<meta name="keywords" content="pixel-battle, vkontakte, twitch, reddit, pb, vk, r/place" />
 	<meta name="image" content="./img/favicon.ico" />
-	<meta name="format-detection" content="telephone=no" />
-	<meta name="format-detection" content="address=no" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="pb-panel" />
-	<meta property="og:description" content="panel for managing teams on pb" />
-	<meta property="og:image" content="./img/favicon.ico" />
-	<meta property="og:image:alt" content="pb" />
-	<meta property="og:url" content="https://fxhxyz4.github.io/pb-panel/" />
 	<meta name="darkreader" content="NO-DARKREADER-PLUGIN" />
 	<meta name="robots" content="index" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,14 +26,27 @@
 	</noscript>
 	<main id="main">
 		<h1 class="visually-hidden">panel for managing teams on pb</h1>
-		<div class="add-btn">
-				<button type="button" id="addBtn" class="btn btn-outline-light btn--margin">
-					<i class="fa-solid fa-plus"></i>
-					add team
-				</button>
-				<button type="button" id="allBtn" class="btn btn-outline-light btn-all--padding">
-					start all
-				</button>
+		<div class="btns">
+			<button type="button" id="addBtn" class="btn btn-outline-light btn--margin">
+				<i class="fa-solid fa-plus"></i>
+				add team
+			</button>
+			<button type="button" id="allBtn" class="btn btn-outline-light btn-all--padding">
+				start all
+			</button>
+			<div class="timeout">
+				<ul class="timeout-list">
+					<li class="timeout-item">
+						<a href="#" class="timeout-link time">3:00</a>
+					</li>
+					<li class="timeout-item">
+						<a href="#" class="timeout-link time">4:00</a>
+					</li>
+					<li class="timeout-item">
+						<a href="#" class="timeout-link time">5:00</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="res">
 			<ul class="cards-list">
