@@ -137,5 +137,5 @@ allBtn.addEventListener('click', () => {
 
       clearInterval(interval);
     }
-  }, 1000);
+  }, 1e3);
 });
