@@ -1,6 +1,6 @@
 {
 	"name": "pb-panel",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "panel for managing teams on pb",
 	"keywords": [
 		"pixel-battle",
@@ -21,7 +21,7 @@
 		"dev": "gulp",
 		"build": "gulp build",
 		"deploy": "gh-pages -d build",
-    "prod": "yarn build && yarn deploy"
+		"prod": "yarn build && yarn deploy"
 	},
 	"dependencies": {
 		"gh-pages": "^5.0.0"
