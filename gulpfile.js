@@ -5,7 +5,9 @@ const { src, dest, watch, series, parallel } = require('gulp'),
 	ugly = require('gulp-uglify-es').default,
   htmlmin = require('gulp-htmlmin'),
 	purge = require('gulp-css-purge'),
+  changed = require('gulp-changed'),
 	concat = require('gulp-concat'),
+  newer = require('gulp-newer'),
 	clean = require('gulp-clean');
 
 const styles = () => {
@@ -13,8 +15,6 @@ const styles = () => {
 		.pipe(concat('index.min.css'))
 		.pipe(scss({ outputStyle: 'compressed' }))
     .pipe(purge())
-		.pipe(dest('src/styles'))
-		.pipe(browserSync.stream())
 		.pipe(
 			autoprefixer({
 				overrideBrowserslist: ['last 8 versions'],
@@ -28,11 +28,14 @@ const styles = () => {
 					'Safari >= 6',
 				],
 			})
-		);
+		)
+		.pipe(dest('src/styles'))
+		.pipe(browserSync.stream());
 }
 
 const scripts = () => {
 	return src('src/scripts/index.js')
+    .pipe(newer('src/scripts/index.min.js'))
 		.pipe(concat('index.min.js'))
 		.pipe(ugly())
 		.pipe(dest('src/scripts'))
@@ -49,14 +52,14 @@ const images = () => {
   return src(['src/img/*.*']).pipe(dest('build/img'));
 }
 
-const watching = () => {
-	watch(['src/styles/**/*.scss']).on('change', browserSync.reload);
-	watch(['src/scripts/*.js']).on('change', browserSync.reload);
-	watch(['src/*.html']).on('change', browserSync.reload);
+const otherFiles = () => {
+  return src(['src/robots.txt', './changelog']).pipe(dest('build'));
 }
 
-const otherFiles = () => {
-	return src(['src/robots.txt', './changelog']).pipe(dest('build'));
+const watching = () => {
+  watch(['src/sass/**/*.scss'], styles).on('change', browserSync.reload);
+  watch(['src/scripts/*.js'], scripts).on('change', browserSync.reload);
+  watch(['src/*.html'], html).on('change', browserSync.reload);
 }
 
 const browser = () => {
