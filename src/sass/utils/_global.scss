@@ -1,4 +1,4 @@
-html {
+.html {
 	box-sizing: border-box;
 	font-family: $fontFamily;
 	font-size: $fontSize;
@@ -6,20 +6,25 @@ html {
 
 *,*::before,*::after {
 	box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
-body {
+.page {
 	color: $color;
-	text-align: center;
 	background-color: $backgroundColor;
 	@include userSelect;
 }
 
-#main {
-	margin: 0 auto;
+.main {
+  margin: 0 auto;
 	max-width: 800px;
 	padding-right: 10px;
 	padding-left: 10px;
+}
+
+.page__main {
+  text-align: center;
 }
 
 ul {
@@ -33,57 +38,58 @@ a {
 	padding: 10px 10px;
 }
 
-.btns {
+.main__btns {
 	padding-top: 120px;
 	margin-bottom: 50px;
 }
 
-.btn--margin {
+.btns__add {
 	margin-right: 4px;
 }
 
-.timeout {
+.btns__time {
 	margin-top: 18px;
 }
 
-.timeout-list {
+.time__list {
 	@include displayFlex;
 }
 
-.cards-list {
+.cards__list {
 	@include displayFlex;
 	flex-wrap: wrap;
 	gap: 20px;
 }
 
-.btn--padding {
+.card__btn {
 	font-size: 18px;
 	padding: 3px 40px;
 }
 
-.btn-all--padding {
+.btns__all {
 	padding: 6px 25px;
 }
 
-.card-body {
+.card__body {
 	@include displayFlex;
+  flex: 1 0 auto;
 	flex-direction: column;
 }
 
-.cards-started {
+.cards__started {
 	.card {
 		background-color: #808080;
 	}
 
-	.card-title {
+	.card__title {
 		margin-top: 7px;
 	}
 
-	.btn--padding {
+	.card__btn {
 		display: none;
 	}
 
-	.card-time {
+	.card__time {
 		margin: 0;
     padding: 0;
 		font-size: 28px;
@@ -97,11 +103,11 @@ a {
     height: 13rem !important;
 	}
 
-	.btn-all--padding {
+	.btns__all {
     padding: 6px 4px;
 	}
 
-	.btn--margin {
+	.btns__add {
     margin-right: 0;
 		padding: 6px 4px;
 	}
