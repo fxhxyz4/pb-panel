@@ -28,7 +28,7 @@ const addCard = () => {
   count++;
 
   const newCard = document.createElement('li');
-  newCard.className = `cards-item`;
+  newCard.className = `cards__item`;
 
   const card = document.createElement('div');
   card.className = `card`;
@@ -37,25 +37,25 @@ const addCard = () => {
   card.style.height = `16rem`;
 
   const cardBody = document.createElement('div');
-  cardBody.className = `card-body`;
+  cardBody.className = `card__body`;
 
   const cardTitle = document.createElement('h5');
-  cardTitle.className = `card-title`;
+  cardTitle.className = `card__title`;
   cardTitle.textContent = `team ${count}`;
 
   const cardTime = document.createElement('p');
-  cardTime.className = `card-time`;
+  cardTime.className = `card__time`;
   cardTime.style.display = `none`;
 
   const cardButton = document.createElement('a');
   cardButton.href = `#`;
 
-  cardButton.className = `btn btn-start btn-primary btn--padding cls${count}`;
+  cardButton.className = `card__btn btn btn-start btn-primary cls${count}`;
   cardButton.textContent = `start`;
 
   cardButton.addEventListener('click', () => {
     cardTime.style.display = 'block';
-    newCard.classList.add('cards-started');
+    newCard.classList.add('cards__started');
 
     cardTime.textContent = timeText;
 
@@ -98,8 +98,8 @@ const formatTime = (seconds) => {
 };
 
 allBtn.addEventListener('click', () => {
-  const cardElements = document.querySelectorAll('.cards-item');
-  const cardTime = document.querySelectorAll('.card-time');
+  const cardElements = document.querySelectorAll('.cards__item');
+  const cardTime = document.querySelectorAll('.card__time');
 
   if (cardElements && cardElements.length === 0) {
     console.error(`[error]` + ' ' + `please add teams`);
@@ -110,7 +110,7 @@ allBtn.addEventListener('click', () => {
   allBtn.disabled = true;
 
   cardElements.forEach(el => {
-    el.classList.add(`cards-started`);
+    el.classList.add(`cards__started`);
   })
 
   cardTime.forEach((t, index) => {
@@ -125,13 +125,13 @@ allBtn.addEventListener('click', () => {
 
       if (seconds <= 0) {
         t.style.display = `none`;
-        cardElements[index].classList.remove('cards-started');
+        cardElements[index].classList.remove('cards__started');
       }
 
       t.textContent = formatTime(seconds);
     });
 
-    if (document.querySelectorAll('.cards-started').length === 0) {
+    if (document.querySelectorAll('.cards__started').length === 0) {
       addBtn.disabled = false;
       allBtn.disabled = false;
 
