@@ -39,6 +39,6 @@
 		"gulp-newer": "^1.4.0",
 		"gulp-sass": "^5.1.0",
 		"gulp-uglify-es": "^3.0.0",
-		"sass": "^1.66.1"
+		"sass": "^1.67.0"
 	}
 }
