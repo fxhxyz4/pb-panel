@@ -1,6 +1,6 @@
 {
 	"name": "pb-panel",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "panel for managing teams on pb",
 	"keywords": [
 		"pixel-battle",
@@ -9,8 +9,6 @@
 		"twitch",
 		"reddit",
 		"gulp",
-		"scss",
-    "bem",
 		"vk",
 		"pb"
 	],
@@ -28,9 +26,13 @@
 		"gh-pages": "^6.0.0"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.22.15",
+		"@babel/core": "^7.22.19",
+		"@babel/preset-env": "^7.22.15",
 		"browser-sync": "^2.28.3",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
+		"gulp-babel": "^8.0.0",
 		"gulp-changed": "^4.0.3",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
@@ -38,6 +40,7 @@
 		"gulp-htmlmin": "^5.0.1",
 		"gulp-newer": "^1.4.0",
 		"gulp-sass": "^5.1.0",
+		"gulp-sourcemaps": "^3.0.0",
 		"gulp-uglify-es": "^3.0.0",
 		"sass": "^1.66.0"
 	}
