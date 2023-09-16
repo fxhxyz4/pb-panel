@@ -1,8 +1,13 @@
 ## changelog
 
+### v1.0.3
+- added babel polyfills
+
+#
+
 ### v1.0.2
 
-- added bem 
+- rewrite css classes with bem methodology
 
 #
 
