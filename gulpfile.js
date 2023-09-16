@@ -3,11 +3,13 @@ const { src, dest, watch, series, parallel } = require('gulp'),
   scss = require('gulp-sass')(require('sass')),
   autoprefixer = require('gulp-autoprefixer'),
 	ugly = require('gulp-uglify-es').default,
+  sourcemaps = require("gulp-sourcemaps"),
   htmlmin = require('gulp-htmlmin'),
 	purge = require('gulp-css-purge'),
   changed = require('gulp-changed'),
 	concat = require('gulp-concat'),
   newer = require('gulp-newer'),
+  babel = require("gulp-babel"),
 	clean = require('gulp-clean');
 
 const styles = () => {
@@ -36,8 +38,13 @@ const styles = () => {
 const scripts = () => {
 	return src('src/scripts/index.js')
     .pipe(newer('src/scripts/index.min.js'))
+    .pipe(sourcemaps.init())
+    .pipe(babel({
+      presets: ["@babel/preset-env"]
+    }))
 		.pipe(concat('index.min.js'))
 		.pipe(ugly())
+    .pipe(sourcemaps.write("."))
 		.pipe(dest('src/scripts'))
 		.pipe(browserSync.stream());
 }
@@ -53,7 +60,7 @@ const images = () => {
 }
 
 const otherFiles = () => {
-  return src(['src/robots.txt', './changelog']).pipe(dest('build'));
+  return src(['src/robots.txt', './changelog.md']).pipe(dest('build'));
 }
 
 const watching = () => {
@@ -80,7 +87,6 @@ const buildDist = () => {
 		[
 			'./src/index.html',
 			'./src/styles/index.min.css',
-			'./src/scripts/modules/refs.js',
       './src/scripts/index.min.js',
 		],
 		{ base: './src' }
