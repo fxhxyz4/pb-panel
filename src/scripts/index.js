@@ -1,7 +1,13 @@
 console.clear();
 
-import { refs } from './modules/refs.js';
-const { cardList, addBtn, allBtn, timeList } = refs;
+const refs = {
+  cardList: document.querySelector('.cards__list'),
+  timeList: document.querySelectorAll('.time__link'),
+  addBtn: document.querySelector('.btns__add'),
+  allBtn: document.querySelector('.btns__all'),
+}
+
+const { cardList, timeList, addBtn, allBtn } = refs;
 
 let timeText = `5:00`;
 let timeout = 5;
