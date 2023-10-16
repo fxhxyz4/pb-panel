@@ -88,6 +88,7 @@ const buildDist = () => {
 			'./src/index.html',
 			'./src/styles/index.min.css',
       './src/scripts/index.min.js',
+      './src/scripts/index.min.js.map',
 		],
 		{ base: './src' }
 	).pipe(dest('build'));
