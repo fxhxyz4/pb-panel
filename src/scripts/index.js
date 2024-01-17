@@ -1,17 +1,11 @@
-console.clear();
+const cardList = document.querySelector('.cards__list'),
+  timeList = document.querySelectorAll('.time__link'),
+  addBtn = document.querySelector('.btns__add'),
+  allBtn = document.querySelector('.btns__all');
 
-const refs = {
-  cardList: document.querySelector('.cards__list'),
-  timeList: document.querySelectorAll('.time__link'),
-  addBtn: document.querySelector('.btns__add'),
-  allBtn: document.querySelector('.btns__all'),
-}
-
-const { cardList, timeList, addBtn, allBtn } = refs;
-
-let timeText = `5:00`;
-let timeout = 5;
-let count = 0;
+let timeText = `5:00`,
+  timeout = 5,
+  count = 0;
 
 timeList.forEach(t => {
   t.addEventListener('click', () => {
