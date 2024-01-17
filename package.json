@@ -31,17 +31,21 @@
 		"@babel/preset-env": "^7.23.8",
 		"browser-sync": "^3.0.2",
 		"gulp": "^4.0.2",
-		"gulp-autoprefixer": "^9.0.0",
+		"gulp-autoprefixer": "8.0.0",
 		"gulp-babel": "^8.0.0",
-		"gulp-changed": "^5.0.2",
+		"gulp-changed": "^4.0.3",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-css-purge": "^3.0.9",
 		"gulp-htmlmin": "^5.0.1",
 		"gulp-newer": "^1.4.0",
+		"gulp-postcss": "^9.1.0",
+		"gulp-rename": "^2.0.0",
 		"gulp-sass": "^5.1.0",
 		"gulp-sourcemaps": "^3.0.0",
 		"gulp-uglify-es": "^3.0.0",
+		"postcss": "^8.4.33",
+		"postcss-filter-mq": "^1.0.1",
 		"sass": "^1.69.7"
 	}
 }
