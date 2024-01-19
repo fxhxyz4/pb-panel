@@ -56,6 +56,6 @@
 		"gulp-webp": "4.0.0",
 		"postcss": "^8.4.33",
 		"postcss-filter-mq": "^1.0.1",
-		"sass": "^1.69.7"
+		"sass": "^1.70.0"
 	}
 }
