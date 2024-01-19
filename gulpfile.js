@@ -175,7 +175,7 @@ const sprite = () => {
       mode: {
         stack: {
           sprite: `../sprite.svg`,
-          example: true,
+          example: false,
         }
       }
     }))
