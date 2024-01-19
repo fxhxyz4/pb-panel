@@ -60,7 +60,7 @@ const addCard = () => {
     cardTime.textContent = timeText;
 
     cardButton.disabled = true;
-    startTimer(cardTime, count);
+    startTimer(cardTime, newCard);
   });
 
   cardBody.appendChild(cardTitle);
@@ -73,7 +73,7 @@ const addCard = () => {
   cardList.appendChild(newCard);
 }
 
-const startTimer = (cardTime) => {
+const startTimer = (cardTime, newCard) => {
   let seconds = timeout * 60;
 
   const interval = setInterval(() => {
@@ -82,6 +82,7 @@ const startTimer = (cardTime) => {
 
     if (seconds <= 0) {
       cardTime.style.display = 'none';
+      newCard.classList.remove('cards__started');
       clearInterval(interval);
     }
 
@@ -112,7 +113,7 @@ allBtn.addEventListener('click', () => {
 
   cardElements.forEach(el => {
     el.classList.add(`cards__started`);
-  })
+  });
 
   cardTime.forEach((t, index) => {
     t.style.display = `block`;
@@ -125,8 +126,8 @@ allBtn.addEventListener('click', () => {
       seconds--;
 
       if (seconds <= 0) {
-        t.style.display = `none`;
         cardElements[index].classList.remove('cards__started');
+        t.style.display = `none`;
       }
 
       t.textContent = formatTime(seconds);
