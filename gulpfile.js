@@ -24,8 +24,25 @@ const path = {
   },
 
   images: {
-    i: `src/img/*.*`,
+    i: [
+        `src/img/*.*`,
+        `!src/img/favicon.ico`,
+        `!src/img/*.svg`,
+       ],
     o: `build/img`,
+  },
+
+  sprite: {
+    i: [
+        `build/img/svg/*.svg`,
+        `build/img/*.svg`
+      ],
+    o: `build/img/svg/`,
+  },
+
+  favicon: {
+    i: `src/img/favicon.png`,
+    o: `src/img/`,
   },
 
   other: {
@@ -52,7 +69,8 @@ const path = {
     i: [
       `src/sass/**/*.scss`,
       `src/scripts/*.js`,
-      `src/*.html`
+      `src/*.html`,
+      `src/img/`
     ]
   }
 }
@@ -64,15 +82,22 @@ const { src, dest, watch, series, parallel } = require(`gulp`),
 	ugly = require(`gulp-uglify-es`).default,
   sourcemaps = require(`gulp-sourcemaps`),
   filter = require(`postcss-filter-mq`),
+  imagemin = require(`gulp-imagemin`),
   htmlmin = require(`gulp-htmlmin`),
 	purge = require(`gulp-css-purge`),
   changed = require(`gulp-changed`),
   postcss = require(`gulp-postcss`),
+  svg = require(`gulp-svg-sprite`),
   rename = require(`gulp-rename`),
 	concat = require(`gulp-concat`),
+  cache = require(`gulp-cached`),
   newer = require(`gulp-newer`),
   babel = require(`gulp-babel`),
-	clean = require(`gulp-clean`);
+	clean = require(`gulp-clean`),
+  ico = require(`gulp-to-ico`),
+  avif = require(`gulp-avif`),
+  svgo = require(`gulp-svgo`),
+  webp = require(`gulp-webp`);
 
 const styles = () => {
 	return src(path.styles.i)
@@ -128,7 +153,40 @@ const html = () => {
 }
 
 const images = () => {
-  return src([path.images.i]).pipe(dest(path.images.o));
+  return src(path.images.i)
+    .pipe(newer(path.images.o))
+    .pipe(avif({ quality: 50 }))
+
+    .pipe(src(path.images.i[0]))
+    .pipe(newer(path.images.o))
+    .pipe(webp())
+
+    .pipe(src(path.images.i[0]))
+    .pipe(newer(path.images.o))
+    .pipe(imagemin())
+
+    .pipe(dest(path.images.o))
+    .pipe(browserSync.stream());
+}
+
+const sprite = () => {
+  return src(path.sprite.i)
+    .pipe(svg({
+      mode: {
+        stack: {
+          sprite: `../sprite.svg`,
+          example: true,
+        }
+      }
+    }))
+    .pipe(svgo())
+    .pipe(dest(path.sprite.o));
+}
+
+const favicon = () => {
+  return src(path.favicon.i)
+    .pipe(ico(`favicon.ico`))
+    .pipe(dest(path.favicon.o));
 }
 
 const otherFiles = () => {
@@ -141,6 +199,8 @@ const watching = () => {
   watch(path.watching.i[1], scripts).on(`change`, browserSync.reload);
 
   watch(path.watching.i[2], html).on(`change`, browserSync.reload);
+
+  watch(path.watching.i[3], images).on(`change`, browserSync.reload);
 }
 
 const browser = () => {
@@ -170,6 +230,9 @@ exports.scripts = scripts;
 exports.html = html;
 
 exports.images = images;
+exports.favicon = favicon;
+
+exports.sprite = sprite;
 exports.otherFiles = otherFiles;
 
 exports.watching = watching;
@@ -183,6 +246,8 @@ exports.build = series(
 	scripts,
 	html,
   images,
+  favicon,
+  sprite,
 	otherFiles
 );
 
