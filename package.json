@@ -36,7 +36,7 @@
 		"gulp-avif": "^1.1.1",
 		"gulp-babel": "^8.0.0",
 		"gulp-cached": "^1.1.1",
-		"gulp-changed": "^4.0.3",
+		"gulp-changed": "^5.0.2",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-css-purge": "^3.0.9",
