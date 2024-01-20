@@ -19,7 +19,7 @@
 	"scripts": {
 		"dev": "gulp",
 		"build": "gulp build",
-		"svg": "gulp sprite",
+		"fonts": "gulp sprite",
 		"deploy": "gh-pages -d build",
 		"prod": "yarn build && yarn deploy"
 	},
@@ -51,7 +51,7 @@
 		"gulp-svg-sprite": "^2.0.3",
 		"gulp-svgo": "^2.2.1",
 		"gulp-to-ico": "^1.0.0",
-		"gulp-ttf2woff": "^1.1.1",
+		"gulp-ttf2woff2": "^4.0.1",
 		"gulp-uglify-es": "^3.0.0",
 		"gulp-webp": "4.0.0",
 		"postcss": "^8.4.33",
