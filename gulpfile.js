@@ -28,7 +28,7 @@ const path = {
         `src/img/*.*`,
         `!src/img/favicon.ico`,
         `!src/img/*.svg`,
-       ],
+      ],
     o: `build/img`,
   },
 
@@ -43,6 +43,11 @@ const path = {
   favicon: {
     i: `src/img/favicon.png`,
     o: `src/img/`,
+  },
+
+  fonts: {
+    i: `src/fonts/*.*`,
+    o: `build/fonts/`,
   },
 
   other: {
@@ -83,11 +88,13 @@ const { src, dest, watch, series, parallel } = require(`gulp`),
   sourcemaps = require(`gulp-sourcemaps`),
   filter = require(`postcss-filter-mq`),
   imagemin = require(`gulp-imagemin`),
+  ttfwoff = require(`gulp-ttf2woff2`),
   htmlmin = require(`gulp-htmlmin`),
 	purge = require(`gulp-css-purge`),
   changed = require(`gulp-changed`),
   postcss = require(`gulp-postcss`),
   svg = require(`gulp-svg-sprite`),
+  fonter = require(`gulp-fonter`),
   rename = require(`gulp-rename`),
 	concat = require(`gulp-concat`),
   cache = require(`gulp-cached`),
@@ -99,6 +106,10 @@ const { src, dest, watch, series, parallel } = require(`gulp`),
   svgo = require(`gulp-svgo`),
   webp = require(`gulp-webp`);
 
+/**
+  * Compile SCSS styles, concatenate, minify, autoprefix, and generate sourcemaps.
+  * @returns {gulp.Transform}
+*/
 const styles = () => {
 	return src(path.styles.i)
 		.pipe(concat(`index.min.css`))
@@ -122,6 +133,10 @@ const styles = () => {
 		.pipe(browserSync.stream());
 }
 
+/**
+ * Process media queries to separate into a single CSS file.
+ * @returns {gulp.Transform}
+*/
 const mq = () => {
   return src(path.mq.i)
     .pipe(postcss( [ filter ] ))
@@ -132,6 +147,10 @@ const mq = () => {
     .pipe(dest(path.mq.o))
 }
 
+/**
+ * Concatenate, transpile, minify, and generate sourcemaps for JS files.
+ * @returns {gulp.Transform}
+*/
 const scripts = () => {
 	return src(path.scripts.i)
     .pipe(newer(`${path.scripts.o}index.min.js`))
@@ -146,12 +165,20 @@ const scripts = () => {
 		.pipe(browserSync.stream());
 }
 
+/**
+ * Minify HTML files.
+ * @returns {gulp.Transform}
+*/
 const html = () => {
 	return src(path.html.i)
 		.pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(browserSync.stream());
 }
 
+/**
+ * Optimize and convert images to AVIF, WebP, and compress images.
+ * @returns {gulp.Transform}
+*/
 const images = () => {
   return src(path.images.i)
     .pipe(newer(path.images.o))
@@ -169,6 +196,10 @@ const images = () => {
     .pipe(browserSync.stream());
 }
 
+/**
+ * Create an SVG sprite.
+ * @returns {gulp.Transform}
+*/
 const sprite = () => {
   return src(path.sprite.i)
     .pipe(svg({
@@ -183,12 +214,35 @@ const sprite = () => {
     .pipe(dest(path.sprite.o));
 }
 
+/**
+ * Generate a favicon.ico file from the png image.
+ * @returns {gulp.Transform}
+*/
 const favicon = () => {
   return src(path.favicon.i)
     .pipe(ico(`favicon.ico`))
     .pipe(dest(path.favicon.o));
 }
 
+/**
+ * Convert font files (TTF, OTF, EOT, WOFF, SVG) to WOFF format.
+ * @returns {gulp.Transform}
+*/
+const fonts = () => {
+  return src(path.fonts.i)
+    .pipe(fonter({
+      formats: ["ttf", "otf", "eot", "woff", "svg"]
+    }))
+
+    .pipe(src(path.fonts.i + `*.ttf`))
+    .pipe(ttfwoff())
+    .pipe(dest(path.fonts.o));
+}
+
+/**
+ * Copy other files to the destination directory.
+ * @returns {gulp.Transform}
+*/
 const otherFiles = () => {
   return src(path.other.i).pipe(dest(path.other.o));
 }
@@ -233,6 +287,8 @@ exports.images = images;
 exports.favicon = favicon;
 
 exports.sprite = sprite;
+
+exports.fonts = fonts;
 exports.otherFiles = otherFiles;
 
 exports.watching = watching;
@@ -248,6 +304,7 @@ exports.build = series(
   images,
   favicon,
   sprite,
+  fonts,
 	otherFiles
 );
 
