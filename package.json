@@ -55,7 +55,7 @@
     "gulp-uglify-es": "^3.0.0",
     "gulp-webp": "4.0.0",
     "jshint": "^2.13.6",
-    "postcss": "^8.4.33",
+    "postcss": "^8.4.35",
     "postcss-filter-mq": "^1.0.1",
     "sass": "^1.69.7"
   }
