@@ -148,13 +148,11 @@ const mq = () => {
     .pipe(dest(path.mq.o))
 }
 
-/**
- *
- *
-*/
 const lint = () => {
- return src(
-}
+ return src()
+  .pipe(jshint())
+  .pipe(jshint.reporter(`default`));
+});
 
 /**
  * Concatenate, transpile, minify, and generate sourcemaps for JS files.
@@ -289,6 +287,8 @@ const buildDist = () => {
 exports.styles = styles;
 exports.mq = mq;
 
+export.lint = lint;
+
 exports.scripts = scripts;
 exports.html = html;
 
@@ -306,6 +306,7 @@ exports.browser = browser;
 exports.build = series(
 	cleanDist,
 	buildDist,
+  lint,
 	styles,
   mq,
 	scripts,
