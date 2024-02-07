@@ -21,8 +21,8 @@ timeList.forEach(t => {
       timeText = `5:00`;
       timeout = 5;
     }
-  })
-})
+  });
+});
 
 const addCard = () => {
   count++;
@@ -71,7 +71,7 @@ const addCard = () => {
 
   newCard.appendChild(card);
   cardList.appendChild(newCard);
-}
+};
 
 const startTimer = (cardTime, newCard) => {
   let seconds = timeout * 60;
@@ -92,15 +92,18 @@ const startTimer = (cardTime, newCard) => {
 
 addBtn.addEventListener('click', addCard);
 
-const formatTime = (seconds) => {
+const formatTime = seconds => {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
-  
-  return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+
+  return `${minutes}:${remainingSeconds
+    .toString()
+    .padStart(2, '0')}`;
 };
 
 allBtn.addEventListener('click', () => {
-  const cardElements = document.querySelectorAll('.cards__item');
+  const cardElements =
+    document.querySelectorAll('.cards__item');
   const cardTime = document.querySelectorAll('.card__time');
 
   if (cardElements && cardElements.length === 0) {
@@ -122,18 +125,25 @@ allBtn.addEventListener('click', () => {
 
   const interval = setInterval(() => {
     cardTime.forEach((t, index) => {
-      let seconds = parseInt(t.textContent.split(':')[0]) * 60 + parseInt(t.textContent.split(':')[1]);
+      let seconds =
+        parseInt(t.textContent.split(':')[0]) * 60 +
+        parseInt(t.textContent.split(':')[1]);
       seconds--;
 
       if (seconds <= 0) {
-        cardElements[index].classList.remove('cards__started');
+        cardElements[index].classList.remove(
+          'cards__started'
+        );
         t.style.display = `none`;
       }
 
       t.textContent = formatTime(seconds);
     });
 
-    if (document.querySelectorAll('.cards__started').length === 0) {
+    if (
+      document.querySelectorAll('.cards__started')
+        .length === 0
+    ) {
       addBtn.disabled = false;
       allBtn.disabled = false;
 
