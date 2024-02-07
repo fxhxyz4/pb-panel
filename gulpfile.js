@@ -149,6 +149,14 @@ const mq = () => {
 }
 
 /**
+ *
+ *
+*/
+const lint = () => {
+ return src(
+}
+
+/**
  * Concatenate, transpile, minify, and generate sourcemaps for JS files.
  * @returns {gulp.Transform}
 */
