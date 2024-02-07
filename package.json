@@ -19,7 +19,6 @@
 	"scripts": {
 		"dev": "gulp",
 		"build": "gulp build",
-		"fonts": "gulp sprite",
 		"deploy": "gh-pages -d build",
 		"prod": "yarn build && yarn deploy"
 	},
