@@ -319,6 +319,7 @@ exports.build = series(
 );
 
 exports.default = parallel(
+  lint,
 	styles,
   mq,
 	scripts,
