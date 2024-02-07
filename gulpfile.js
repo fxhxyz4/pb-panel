@@ -149,10 +149,10 @@ const mq = () => {
 }
 
 const lint = () => {
- return src()
+ return src(path.scripts.i)
   .pipe(jshint())
   .pipe(jshint.reporter(`default`));
-});
+}
 
 /**
  * Concatenate, transpile, minify, and generate sourcemaps for JS files.
