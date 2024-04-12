@@ -30,7 +30,7 @@
     "@babel/core": "^7.23.7",
     "@babel/preset-env": "^7.24.3",
     "browser-sync": "^3.0.2",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-autoprefixer": "8.0.0",
     "gulp-avif": "^1.1.1",
     "gulp-babel": "^8.0.0",
