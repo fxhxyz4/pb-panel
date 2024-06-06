@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
-    "@babel/core": "^7.23.7",
+    "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.3",
     "browser-sync": "^3.0.2",
     "gulp": "^4.0.2",
