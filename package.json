@@ -23,7 +23,7 @@
     "prod": "yarn build && yarn deploy"
   },
   "dependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.7",
