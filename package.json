@@ -51,7 +51,7 @@
     "gulp-svg-sprite": "^2.0.3",
     "gulp-svgo": "^2.2.1",
     "gulp-to-ico": "^1.0.0",
-    "gulp-ttf2woff2": "^4.0.1",
+    "gulp-ttf2woff2": "^5.0.0",
     "gulp-uglify-es": "^3.0.0",
     "gulp-webp": "4.0.0",
     "jshint": "^2.13.6",
