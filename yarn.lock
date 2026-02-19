@@ -4858,10 +4858,10 @@ gulp-htmlmin@^5.0.1:
     plugin-error "^1.0.1"
     through2 "^2.0.3"
 
-gulp-imagemin@9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/gulp-imagemin/-/gulp-imagemin-9.1.0.tgz#17a351e3ba3eaf366926376762d00ca3a95f9fb2"
-  integrity sha512-PmzTWoNrVMYVN4ObRdHyt6oer4mqxV53IbCDi3Q8EHeDZW0OzAuh6RlOtpd/R7PFmbDUk64q5P+L04fD9I5cVA==
+gulp-imagemin@9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/gulp-imagemin/-/gulp-imagemin-9.2.0.tgz#0e07c825a910223ce3ce28c218bd3c4e8802bff3"
+  integrity sha512-y7yAHTUzfHHq6njHY2OIvLOcffF1I/ULSlfzunnIvPeNNpYDArwrlqCzPvnN4Le0p3H/1ERAAQJJPMhbnTRnFQ==
   dependencies:
     chalk "^5.3.0"
     gulp-plugin-extras "^1.0.0"
