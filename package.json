@@ -1,5 +1,6 @@
 {
   "name": "pb-panel",
+  "type": "commonjs",
   "version": "1.0.3",
   "description": "panel for managing teams on pb",
   "keywords": [
@@ -41,7 +42,7 @@
     "gulp-css-purge": "^3.0.9",
     "gulp-fonter": "^0.3.0",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-imagemin": "9.1.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-jshint": "^2.1.0",
     "gulp-newer": "^1.4.0",
     "gulp-postcss": "^10.0.0",
